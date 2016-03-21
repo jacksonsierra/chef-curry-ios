@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		41AD100FA4E8EE7F672182F5 /* libPods-Chef Curry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C91D22FEF7321AC55C1D085 /* libPods-Chef Curry.a */; };
 		7A9C53D51C9F85280002E643 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9C53D41C9F85280002E643 /* main.m */; };
 		7A9C53D81C9F85280002E643 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9C53D71C9F85280002E643 /* AppDelegate.m */; };
 		7A9C53DB1C9F85280002E643 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9C53DA1C9F85280002E643 /* ViewController.m */; };
@@ -16,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C91D22FEF7321AC55C1D085 /* libPods-Chef Curry.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Chef Curry.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C943DE2437416C929A989F9 /* Pods-Chef Curry.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chef Curry.release.xcconfig"; path = "Pods/Target Support Files/Pods-Chef Curry/Pods-Chef Curry.release.xcconfig"; sourceTree = "<group>"; };
 		7A9C53D01C9F85280002E643 /* Chef Curry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chef Curry.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A9C53D41C9F85280002E643 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7A9C53D61C9F85280002E643 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -26,6 +29,7 @@
 		7A9C53DF1C9F85280002E643 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A9C53E21C9F85280002E643 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A9C53E41C9F85280002E643 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB9C698D54C56F4D917958D2 /* Pods-Chef Curry.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chef Curry.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Chef Curry/Pods-Chef Curry.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +37,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41AD100FA4E8EE7F672182F5 /* libPods-Chef Curry.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		592690BFC6998421F9AB1F55 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FB9C698D54C56F4D917958D2 /* Pods-Chef Curry.debug.xcconfig */,
+				5C943DE2437416C929A989F9 /* Pods-Chef Curry.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		7A9C53C71C9F85280002E643 = {
 			isa = PBXGroup;
 			children = (
 				7A9C53D21C9F85280002E643 /* Chef Curry */,
 				7A9C53D11C9F85280002E643 /* Products */,
+				592690BFC6998421F9AB1F55 /* Pods */,
+				EB7924E94A129638FDE252AF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,6 +95,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		EB7924E94A129638FDE252AF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2C91D22FEF7321AC55C1D085 /* libPods-Chef Curry.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -86,9 +110,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7A9C53E71C9F85280002E643 /* Build configuration list for PBXNativeTarget "Chef Curry" */;
 			buildPhases = (
+				350FE6B06D5122A2887A7E5E /* Check Pods Manifest.lock */,
 				7A9C53CC1C9F85280002E643 /* Sources */,
 				7A9C53CD1C9F85280002E643 /* Frameworks */,
 				7A9C53CE1C9F85280002E643 /* Resources */,
+				9C15CE1AEA5237DC8B4A5441 /* Embed Pods Frameworks */,
+				D79D7275BF6DA7F1C4E4AECC /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -149,6 +176,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		350FE6B06D5122A2887A7E5E /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9C15CE1AEA5237DC8B4A5441 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Chef Curry/Pods-Chef Curry-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D79D7275BF6DA7F1C4E4AECC /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Chef Curry/Pods-Chef Curry-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7A9C53CC1C9F85280002E643 /* Sources */ = {
@@ -265,6 +340,7 @@
 		};
 		7A9C53E81C9F85280002E643 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB9C698D54C56F4D917958D2 /* Pods-Chef Curry.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -280,6 +356,7 @@
 		};
 		7A9C53E91C9F85280002E643 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5C943DE2437416C929A989F9 /* Pods-Chef Curry.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -312,6 +389,7 @@
 				7A9C53E91C9F85280002E643 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
