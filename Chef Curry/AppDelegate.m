@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import "ViewController.h"
+#import <AFNetworking.h>
+#include "constants.h"
 
 @interface AppDelegate ()
 
@@ -14,15 +17,49 @@
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
-      [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound) categories:nil]];
+      [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound|UIUserNotificationTypeNone) categories:nil]];
   } else {
-    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeSound)];
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeSound|UIRemoteNotificationTypeNone)];
   }
   
+  NSDictionary *remoteNotif = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+  if (remoteNotif) {
+    [self handleRemoteNotification:[remoteNotif valueForKey:@"type"]];
+    return YES;
+  }
+  
+  [self getApplicationState];
+  
   return YES;
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+  [self handleRemoteNotification:[userInfo valueForKey:@"type"]];
+}
+
+- (void)handleRemoteNotification:(NSString *)type {
+  if (type) {
+    ViewController *controller = (ViewController *)self.window.rootViewController;
+    [controller setStatus:type];
+    [controller updateUI];
+  }
+}
+
+- (void)getApplicationState {
+  AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+  [manager setResponseSerializer:[AFJSONResponseSerializer serializer]];
+  
+  [manager GET:ServerApiURL
+     parameters:nil
+        success:^(AFHTTPRequestOperation *operation, id responseObject) {
+          NSString *type = [responseObject valueForKey:@"type"];
+          [self handleRemoteNotification:type];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+          NSLog(@"Failed to send device token to server: %@", error);
+        }
+   ];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -52,11 +89,29 @@
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-  NSLog(@"Device token is %@", deviceToken);
+  const unsigned *tokenBytes = [deviceToken bytes];
+  NSString *token = [NSString stringWithFormat:@"%08x%08x%08x%08x%08x%08x%08x%08x", ntohl(tokenBytes[0]), ntohl(tokenBytes[1]), ntohl(tokenBytes[2]), ntohl(tokenBytes[3]), ntohl(tokenBytes[4]), ntohl(tokenBytes[5]), ntohl(tokenBytes[6]), ntohl(tokenBytes[7])];
+  
+  NSLog(@"%@", token);
+  
+  if (token) {
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager setRequestSerializer:[AFJSONRequestSerializer serializer]];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    
+    [manager POST:ServerApiURL
+       parameters:@{@"password": token}
+          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+
+          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"Failed to send device token to server: %@", error);
+          }
+    ];
+  }
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
-  NSLog(@"Failed to get token, error: %@", error);
+  NSLog(@"Failed to get device token: %@", error);
 }
 
 @end
