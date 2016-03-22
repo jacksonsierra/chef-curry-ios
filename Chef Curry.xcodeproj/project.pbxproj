@@ -14,6 +14,7 @@
 		7A9C53DE1C9F85280002E643 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A9C53DC1C9F85280002E643 /* Main.storyboard */; };
 		7A9C53E01C9F85280002E643 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A9C53DF1C9F85280002E643 /* Assets.xcassets */; };
 		7A9C53E31C9F85280002E643 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A9C53E11C9F85280002E643 /* LaunchScreen.storyboard */; };
+		7A9C53EC1CA0BD840002E643 /* UIAssets.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9C53EB1CA0BD840002E643 /* UIAssets.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,9 @@
 		7A9C53DF1C9F85280002E643 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A9C53E21C9F85280002E643 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A9C53E41C9F85280002E643 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A9C53EA1CA0BD840002E643 /* UIAssets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIAssets.h; sourceTree = "<group>"; };
+		7A9C53EB1CA0BD840002E643 /* UIAssets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIAssets.m; sourceTree = "<group>"; };
+		7A9C53ED1CA0F5CE0002E643 /* constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = constants.h; sourceTree = "<group>"; };
 		FB9C698D54C56F4D917958D2 /* Pods-Chef Curry.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chef Curry.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Chef Curry/Pods-Chef Curry.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -80,8 +84,11 @@
 				7A9C53DA1C9F85280002E643 /* ViewController.m */,
 				7A9C53DC1C9F85280002E643 /* Main.storyboard */,
 				7A9C53DF1C9F85280002E643 /* Assets.xcassets */,
+				7A9C53ED1CA0F5CE0002E643 /* constants.h */,
 				7A9C53E11C9F85280002E643 /* LaunchScreen.storyboard */,
 				7A9C53E41C9F85280002E643 /* Info.plist */,
+				7A9C53EA1CA0BD840002E643 /* UIAssets.h */,
+				7A9C53EB1CA0BD840002E643 /* UIAssets.m */,
 				7A9C53D31C9F85280002E643 /* Supporting Files */,
 			);
 			path = "Chef Curry";
@@ -139,6 +146,9 @@
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = E55SQZ22EX;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -232,6 +242,7 @@
 			files = (
 				7A9C53DB1C9F85280002E643 /* ViewController.m in Sources */,
 				7A9C53D81C9F85280002E643 /* AppDelegate.m in Sources */,
+				7A9C53EC1CA0BD840002E643 /* UIAssets.m in Sources */,
 				7A9C53D51C9F85280002E643 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
