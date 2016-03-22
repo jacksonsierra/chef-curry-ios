@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8150" systemVersion="15A204g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8122"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -15,8 +16,37 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ng-o7-ENM">
+                                <rect key="frame" x="0.0" y="20" width="600" height="290"/>
+                                <color key="backgroundColor" red="0.1803921568627451" green="0.20392156862745098" blue="0.22352941176470587" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nyw-1I-x3r">
+                                <rect key="frame" x="0.0" y="310" width="600" height="290"/>
+                                <color key="backgroundColor" red="0.12549019607843137" green="0.14117647058823529" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Stephen_Curry_God_Cropped" translatesAutoresizingMaskIntoConstraints="NO" id="Lmw-fE-VPK">
+                                <rect key="frame" x="175" y="175" width="250" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="4ua-0V-AJD"/>
+                                    <constraint firstAttribute="width" constant="250" id="7E3-43-8QF"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Lmw-fE-VPK" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="AOd-Be-zjI"/>
+                            <constraint firstItem="2ng-o7-ENM" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" id="E2c-20-mXO"/>
+                            <constraint firstAttribute="trailing" secondItem="nyw-1I-x3r" secondAttribute="trailing" id="NFO-1d-N2w"/>
+                            <constraint firstItem="nyw-1I-x3r" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="NLH-BE-ecT"/>
+                            <constraint firstItem="nyw-1I-x3r" firstAttribute="height" secondItem="2ng-o7-ENM" secondAttribute="height" id="QFB-bA-1yT"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="nyw-1I-x3r" secondAttribute="bottom" id="Ut6-Uu-Ou8"/>
+                            <constraint firstItem="2ng-o7-ENM" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="a49-z9-6pH"/>
+                            <constraint firstItem="Lmw-fE-VPK" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="app-ug-G3u"/>
+                            <constraint firstItem="nyw-1I-x3r" firstAttribute="top" secondItem="2ng-o7-ENM" secondAttribute="bottom" id="bqP-Pw-afZ"/>
+                            <constraint firstAttribute="trailing" secondItem="2ng-o7-ENM" secondAttribute="trailing" id="hjR-6x-Kse"/>
+                            <constraint firstItem="nyw-1I-x3r" firstAttribute="height" secondItem="2ng-o7-ENM" secondAttribute="height" id="uOS-8g-BJP"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -24,4 +54,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Stephen_Curry_God_Cropped" width="538" height="537"/>
+    </resources>
 </document>
