@@ -9,6 +9,8 @@
 #ifndef constants_h
 #define constants_h
 
-#define ServerApiURL @"http://159.203.244.50:5000"
+#define ServerApiURL @"https://isstephonfire.com/"
+#define TokenApiURL @"https://isstephonfire.com/api/register/"
+#define AppStateApiURL @"https://isstephonfire.com/api/loadstate/"
 
 #endif /* constants_h */
