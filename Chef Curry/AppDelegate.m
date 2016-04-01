@@ -36,6 +36,7 @@
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+  NSLog(@"%@", userInfo);
   [self handleRemoteNotification:[userInfo valueForKey:@"type"]];
 }
 
@@ -51,13 +52,16 @@
   AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
   [manager setResponseSerializer:[AFJSONResponseSerializer serializer]];
   
-  [manager GET:ServerApiURL
+  [manager GET:AppStateApiURL
      parameters:nil
         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+          NSLog(@"%@", operation.responseString);          
           NSString *type = [responseObject valueForKey:@"type"];
           [self handleRemoteNotification:type];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-          NSLog(@"Failed to send device token to server: %@", error);
+          NSLog(@"%@", operation.responseString);
+          [self handleRemoteNotification:@"none"];
+          NSLog(@"Failed to retrieve application state: %@", error);
         }
    ];
 }
@@ -98,12 +102,13 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager setRequestSerializer:[AFJSONRequestSerializer serializer]];
     [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     
-    [manager POST:ServerApiURL
-       parameters:@{@"password": token}
+    [manager POST:TokenApiURL
+       parameters:@{@"device_token": token}
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
-
           } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [self handleRemoteNotification:@"none"];
             NSLog(@"Failed to send device token to server: %@", error);
           }
     ];
